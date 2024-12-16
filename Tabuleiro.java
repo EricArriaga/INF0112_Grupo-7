@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Tabuleiro {
     public final static int NUM_CASAS = 24;
-    private List<Casa> casas;
+    private final List<Casa> casas;
     private final int[][] gruposDeMoinho = {
             {0, 1, 2}, {8, 9, 10}, {16, 17, 18}, {7, 15, 23}, {3, 11, 19}, {20, 21, 22}, {12, 13, 14}, {4, 5, 6},
             {0, 7, 6}, {8, 15, 14}, {16, 23, 22}, {1, 9, 17}, {21, 13, 5}, {18, 19, 20}, {10, 11, 12}, {2, 3, 4}
@@ -17,9 +17,9 @@ public class Tabuleiro {
         conectarCasas();
     }
 
-
     private void conectarCasas() {
-        // Matriz com as conexões. Cada linha representa uma casa e contém os IDs das casas adjacentes.
+        //matriz com as conexões do tabuleiro
+        //cada linha representa uma casa e contém os IDs das casas adjacentes
         int[][] conexoes = {
                 // Quadrado externo
                 {1, 7}, {0, 2, 9}, {1, 3}, {2, 4, 11}, {3, 5}, {4, 6, 13}, {5, 7}, {0, 6, 15},
@@ -29,7 +29,7 @@ public class Tabuleiro {
                 {17, 23}, {9, 16, 18}, {17, 19}, {11, 18, 20}, {19, 21}, {13, 20, 22}, {21, 23}, {15, 16, 22}
         };
 
-        // Itera sobre a matriz e conecta as casas.
+        //itera sobre a matriz e conecta as casas
         for (int i = 0; i < conexoes.length; i++) {
             Casa casaAtual = casas.get(i);
             for (int adjacente : conexoes[i]) {
@@ -38,12 +38,10 @@ public class Tabuleiro {
         }
     }
 
-
     public boolean colocarPeca(int id, char simbolo) {
         Casa casa = casas.get(id);
 
         if (casa.getOcupante() == '-') {
-            //verificar se o jogador tem pecas para colocar
             casa.setOcupante(simbolo);
             return true;
         }
@@ -87,7 +85,6 @@ public class Tabuleiro {
         return false;
     }
 
-    //implementar
     public boolean verificarMoinho(int indice, char jogador){
         //verifica se os indices fazem sentido
         if (indice < 0 || indice >= casas.size()) {
@@ -102,7 +99,7 @@ public class Tabuleiro {
             return false;
         }
 
-        // itera pelas combinações de vizinhos da casa
+        //itera pelas combinações de vizinhos da casa
         for (int[] grupo : gruposDeMoinho) {
             if (grupo[0] == indice || grupo[1] == indice || grupo[2] == indice){
                 if (casas.get(grupo[0]).getOcupante() == jogador &&
@@ -118,13 +115,13 @@ public class Tabuleiro {
 
 
     public void imprimirTabuleiro() {
-        // Array para coletar os símbolos das casas
+        //array para coletar os símbolos das casas
         String[] simbolos = new String[24];
         for (int i = 0; i < NUM_CASAS; i++) {
             simbolos[i] = casas.get(i).getOcupante() == ' ' ? "-" : Character.toString(casas.get(i).getOcupante());
         }
 
-        // Imprimindo o tabuleiro no formato esperado
+        //imprimindo o tabuleiro no formato esperado
         System.out.println();
         System.out.println(simbolos[0] + " ________ " + simbolos[1] + " ________ " + simbolos[2]);
         System.out.println("| " + simbolos[8] + " ______ " + simbolos[9] + " ______ " + simbolos[10] + " |");
@@ -150,5 +147,17 @@ public class Tabuleiro {
         return true;    //não há como se mover = bloqueio!
     }
 
+    public char getPeca(int pos) {
+        return casas.get(pos).getOcupante();
+    }
 
+    public Casa getCasa(int posicao) {
+        return casas.get(posicao);
+    }
+
+    public void resetarTabuleiro() {
+        for (int i = 0; i < NUM_CASAS; i++) {
+            casas.get(i).setOcupante('-');
+        }
+    }
 }
