@@ -20,8 +20,18 @@ public class ControleJogoGUI {
 
     private JFrame frame;
     private JLabel infoJogador;
-    
-    
+
+    private Cliente cliente;
+
+
+    public ControleJogoGUI(Cliente cliente){
+
+        this.cliente = cliente;
+        cliente.setControle(this);
+
+        this.tabuleiro = new Tabuleiro();
+        inicializarInterface();
+    }
 
 
     public ControleJogoGUI() {
@@ -62,7 +72,7 @@ public class ControleJogoGUI {
                     botao.setPreferredSize(new Dimension(50, 50));
                     botao.setBackground(new Color(132, 132, 112));
                     botao.setActionCommand(String.valueOf(indiceLogico));
-                    botao.addActionListener(e -> tratarClique(Integer.parseInt(e.getActionCommand())));
+                    botao.addActionListener(e -> cliente.tratarClique(Integer.parseInt(e.getActionCommand())));
                     botoesTabuleiro[indiceLogico] = botao;
                     painelTabuleiro.add(botao);
 
@@ -113,7 +123,7 @@ public class ControleJogoGUI {
         }
     }
 
-    private void tratarClique(int posicao) {
+    public void tratarClique(int posicao) {
         if (faseInicial && !modoCaptura) {
             System.out.println("Modo captura: " + modoCaptura + ", Fase inicial: " + faseInicial);
 
