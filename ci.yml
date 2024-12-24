@@ -19,7 +19,7 @@ jobs:
     - name: Setup JDK
       uses: actions/setup-java@v3
       with:
-        java-version: '17' # Ajuste para a versão do Java que você usa
+        java-version: '17' # Altere para a versão do Java usada no seu projeto
         distribution: 'temurin'
 
     - name: Compile Java Code
