@@ -29,7 +29,7 @@ jobs:
 
     - name: Run Tests
       run: |
-        java -cp bin:lib/junit-platform-console-standalone-1.11.0.jar org.junit.platform.console.ConsoleLauncher --scan-classpath
+        java -cp "bin:lib/junit-platform-console-standalone-1.11.0.jar" org.junit.platform.console.ConsoleLauncher --scan-classpath
 
   build-windows:
     runs-on: windows-latest
@@ -51,7 +51,7 @@ jobs:
 
     - name: Run Tests
       run: |
-        java -cp bin;lib/junit-platform-console-standalone-1.11.0.jar org.junit.platform.console.ConsoleLauncher --scan-classpath
+        java -cp "bin;lib/junit-platform-console-standalone-1.11.0.jar" org.junit.platform.console.ConsoleLauncher --scan-classpath
 
   build-macos:
     runs-on: macos-latest
@@ -73,4 +73,4 @@ jobs:
 
     - name: Run Tests
       run: |
-        java -cp bin:lib/junit-platform-console-standalone-1.11.0.jar org.junit.platform.console.ConsoleLauncher --scan-classpath
+        java -cp "bin:lib/junit-platform-console-standalone-1.11.0.jar" org.junit.platform.console.ConsoleLauncher --scan-classpath
