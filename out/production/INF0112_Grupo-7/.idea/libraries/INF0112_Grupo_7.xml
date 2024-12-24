@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="INF0112_Grupo-7">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/TrilhaClient.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Trilha.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Servidor.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

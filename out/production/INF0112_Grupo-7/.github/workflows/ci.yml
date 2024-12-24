@@ -1,0 +1,32 @@
+name: Java CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17' # Altere para a versão usada no seu projeto
+        distribution: 'temurin'
+
+    - name: Compile Java Code
+      run: |
+        mkdir -p bin
+        javac -d bin *.java
+
+    - name: Run Tests
+      run: |
+        java -cp bin org.junit.platform.console.ConsoleLauncher --scan-class-path
