@@ -47,8 +47,10 @@ public class CasaTest {
     void testListaVizinhos() {
         Casa cazinha = new Casa(1);
         Casa cazinha2 = new Casa(2);
+
         List<Casa> vizinhos = List.of(cazinha, cazinha2);
-        assertEquals(vizinhos.getFirst().getOcupante(), cazinha.getOcupante(), "Deveria estar vazia: -");
+
+        assertEquals(vizinhos.get(0).getOcupante(), cazinha.getOcupante(), "Deveria estar vazia: -");
     }
 
 }
