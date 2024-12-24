@@ -25,7 +25,7 @@ jobs:
     - name: Compile Java Code
       run: |
         mkdir -p bin
-        javac -d bin $(find src -name "*.java")
+        javac -d bin *.java
 
     - name: Run Tests
       run: |
