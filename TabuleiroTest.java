@@ -10,8 +10,10 @@ class TabuleiroTest {
         Tabuleiro tabuleiro = new Tabuleiro();
         Casa casa = new Casa(ID);
 
-        tabuleiro.colocarPeca(ID, 'X');
+        //tabuleiro.colocarPeca(ID, 'X');
+        assertTrue(tabuleiro.colocarPeca(ID, 'X'));
         assertEquals('X', tabuleiro.getPeca(1), "A peça foi colocada com sucesso.");
+
     }
 
     @Test
