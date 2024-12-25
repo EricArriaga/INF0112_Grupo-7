@@ -42,8 +42,8 @@ public class Tabuleiro {
         Casa casa = casas.get(id);
 
         if (casa.getOcupante() == '-') {
-            casa.setOcupante();
-            return true;
+            casa.setOcupante(simbolo);
+            return false;
         }
         return false;
     }
