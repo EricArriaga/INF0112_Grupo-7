@@ -43,7 +43,7 @@ public class Tabuleiro {
 
         if (casa.getOcupante() == '-') {
             casa.setOcupante(simbolo);
-            return false;
+            return true;
         }
         return false;
     }
